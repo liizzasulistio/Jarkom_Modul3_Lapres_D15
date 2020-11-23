@@ -4,8 +4,8 @@
 ---
 ## Ketentuan
 1. Default memori UML adalah 64M, kecuali:
-	a. SURABAYA : 256M
-	b. MALANG : 160M
+	* SURABAYA : 256M
+	* MALANG : 160M
 	c. MOJOKERTO : 128M
 	d. TUBAN: 128M
 2. Menghitung dan menggunakan IP sesuai dengan NID Tuntap dan NID DMZ masing-masing kelompok
