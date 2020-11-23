@@ -1,2 +1,11 @@
 # Jarkom_Modul3_Lapres_D15
-Repositori untuk praktikum mata kuliah Jaringan Komputer
+- Ammar Alifian Fahdan (05111840000007)
+- Lii'zza Aisyah Putri Sulistio (05111840000073)
+---
+## Persiapan
+
+---
+## Dynamic Host Configuration Protocol
+
+---
+## Proxy Server
