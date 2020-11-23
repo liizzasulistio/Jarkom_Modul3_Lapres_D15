@@ -2,9 +2,6 @@
 - Ammar Alifian Fahdan (05111840000007)
 - Lii'zza Aisyah Putri Sulistio (05111840000073)
 ---
-## Persiapan
-
----
 ## Dynamic Host Configuration Protocol
 
 ---
