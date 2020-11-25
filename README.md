@@ -181,18 +181,20 @@ Pada UML GRESIK dan MADIUN (client) sering force close tetapi tidak bisa di-*hal
 	<img width="496" alt="dhcp_relay_SURABAYA" src="https://user-images.githubusercontent.com/58472359/100223784-888f9d80-2f4e-11eb-912f-7b351eb7af39.png">
 8. Lakukan `service isc-dhcp-server restart` pada TUBAN dan `service isc-dhcp-relay restart` pada SURABAYA
 9. Lakukan pengecekan dengan cara `service networking restart` kemudian cek IP dengan `ifconfig` pada masing-masing client
-	* GRESIK (subnet 1)
-	<img width="496" alt="restart_GRESIK" src="https://user-images.githubusercontent.com/58472359/100224057-e328f980-2f4e-11eb-903f-4b7bccb52506.png">
-	<img width="496" alt="ifconfig_GRESIK" src="https://user-images.githubusercontent.com/58472359/100224069-e6bc8080-2f4e-11eb-8f87-0ebbc5baba0c.png">
-	* SIDOARJO (subnet 1)
-	<img width="512" alt="restart_SIDOARJO" src="https://user-images.githubusercontent.com/58472359/100224133-00f65e80-2f4f-11eb-84ed-b989bcb8d9d7.png">
-	<img width="496" alt="ifconfig_SIDOARJO" src="https://user-images.githubusercontent.com/58472359/100224135-02c02200-2f4f-11eb-9987-50dae3863e42.png">
-	* BANYUWANGI (subnet 3)
-	<img width="496" alt="restart_BANYUWANGI" src="https://user-images.githubusercontent.com/58472359/100224150-0653a900-2f4f-11eb-9349-1a001c14499f.png">
-	<img width="496" alt="ifconfig_BANYUWANGI" src="https://user-images.githubusercontent.com/58472359/100224152-0784d600-2f4f-11eb-987c-4d8c639ff773.png">
+	* [Screenshot GRESIK (subnet 1) 01](https://user-images.githubusercontent.com/58472359/100224057-e328f980-2f4e-11eb-903f-4b7bccb52506.png)
+	* [Screenshot GRESIK (subnet 1) 02](https://user-images.githubusercontent.com/58472359/100224069-e6bc8080-2f4e-11eb-8f87-0ebbc5baba0c.png)
+	* [Screenshot SIDOARJO (subnet 1) 01](https://user-images.githubusercontent.com/58472359/100224133-00f65e80-2f4f-11eb-84ed-b989bcb8d9d7.png)
+	* [Screenshot SIDOARJO (subnet 1) 02](https://user-images.githubusercontent.com/58472359/100224135-02c02200-2f4f-11eb-9987-50dae3863e42.png)
+	* [Screenshot BANYUWANGI (subnet 3) 01](https://user-images.githubusercontent.com/58472359/100224150-0653a900-2f4f-11eb-9349-1a001c14499f.png)
+	* [Screenshot BANYUWANGI (subnet 3) 02](https://user-images.githubusercontent.com/58472359/100224152-0784d600-2f4f-11eb-987c-4d8c639ff773.png)
 	* MADIUN (subnet 3)
 	<img width="496" alt="restart_MADIUN" src="https://user-images.githubusercontent.com/58472359/100224154-08b60300-2f4f-11eb-92a3-4018da040bbb.png">
 	<img width="512" alt="ifconfig_MADIUN" src="https://user-images.githubusercontent.com/58472359/100224156-09e73000-2f4f-11eb-9f6c-e74f48f5975c.png">
+	| Subnet | Keterangan | Screenshot |
+	|:------:|------------|:----------:|
+	|Subnet 1| restart di GRESIK | <img width="496" alt="restart_GRESIK" src="https://user-images.githubusercontent.com/58472359/100224057-e328f980-2f4e-11eb-903f-4b7bccb52506.png">|
+	
+	
 10. Lakukan juga pengecekan dengan cara `cat /etc/resolv.conf` pada masing-masing client untuk mengetahui DNS mana yang dituju, jika menunjukkan `nameserver 10.151.79.130` dan `nameserver 202.46.129.2` maka ketentuan pada soal sudah terpenuhi.
 	* GRESIK
 	<img width="496" alt="cat_GRESIK" src="https://user-images.githubusercontent.com/58472359/100224336-49158100-2f4f-11eb-9e9e-fe8ceec2171f.png">
