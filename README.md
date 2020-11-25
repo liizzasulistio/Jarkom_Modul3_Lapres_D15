@@ -141,8 +141,7 @@ Pada UML GRESIK dan MADIUN (client) sering force close tetapi tidak bisa di-*hal
 	* [Screenshot Interfaces MADIUN](https://user-images.githubusercontent.com/58472359/100223128-a6a8ce00-2f4d-11eb-909d-ed815db204b6.png)
 5. Di TUBAN buka file `/etc/default/isc-dhcp-server` kemudian isikan `INTERFACES = "eth0"` seperti pada gambar di bawah ini:<img width="496" alt="dhcp_server_TUBAN_01" src="https://user-images.githubusercontent.com/58472359/100223224-c809ba00-2f4d-11eb-99b3-4552417eacf0.png">
 6. Isikan konfigurasi seperti pada gambar atau pada potongan konfigurasi di bawah ini pada file `/etc/dchp/dhcpd.conf` di TUBAN	
-	* Screenshot DHCP Server di TUBAN (1)
-	* <img width="496" alt="dhcp_server_TUBAN_02" src="https://user-images.githubusercontent.com/58472359/100223253-d1932200-2f4d-11eb-8fd4-88388d64a15c.png">
+	* [Screenshot DHCP Server di TUBAN (1)](https://user-images.githubusercontent.com/58472359/100223253-d1932200-2f4d-11eb-8fd4-88388d64a15c.png)
 	* [Screenshot DHCP Server di TUBAN (2)](https://user-images.githubusercontent.com/58472359/100223258-d35ce580-2f4d-11eb-83ae-a0179e5989c4.png)
 	* [Screenshot DHCP Server di TUBAN (3)](https://user-images.githubusercontent.com/58472359/100223263-d48e1280-2f4d-11eb-9c71-bb0dacf5932a.png)
 	* Konfigurasi untuk subnet 2 (dari Server ke Router)
@@ -177,9 +176,9 @@ Pada UML GRESIK dan MADIUN (client) sering force close tetapi tidak bisa di-*hal
 	}
 	~~~
 7. Di SURABAYA tambahkan konfigurasi seperti pada gambar atau pada potongan konfigurasi di bawah ini
+	* Line `SERVERS="10.151.79.132"` yang merupakan alamat IP dari TUBAN dan `INTERFACES="eth1 eth2 eth3"`
 	* Screenshot
 	<img width="496" alt="dhcp_relay_SURABAYA" src="https://user-images.githubusercontent.com/58472359/100223784-888f9d80-2f4e-11eb-912f-7b351eb7af39.png">
-	* Line `SERVERS="10.151.79.132"` yang merupakan alamat IP dari TUBAN dan `INTERFACES="eth1 eth2 eth3"`
 8. Lakukan `service isc-dhcp-server restart` pada TUBAN dan `service isc-dhcp-relay restart` pada SURABAYA
 9. Lakukan pengecekan dengan cara `service networking restart` kemudian cek IP dengan `ifconfig` pada masing-masing client
 	* GRESIK (subnet 1)
