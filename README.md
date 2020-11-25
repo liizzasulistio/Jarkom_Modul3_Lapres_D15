@@ -44,20 +44,19 @@ Pada UML GRESIK dan MADIUN (client) sering force close tetapi tidak bisa di-halt
 
 ### Langkah-langkah pengerjaan:
 1. Membuat konfigurasi interfaces pada Router dan Server, kemudian jalankan `service networking restart`
-	* SURABAYA
-	<img width="496" alt="interfaces_router_SURABAYA_01" src="https://user-images.githubusercontent.com/58472359/100222955-6ea18b00-2f4d-11eb-9daa-de8bec7775d6.png">
-<img width="496" alt="interfaces_router_SURABAYA_02" src="https://user-images.githubusercontent.com/58472359/100222965-73663f00-2f4d-11eb-8936-d000201a721e.png">
-
+	* [Interfaces SURABAYA](https://user-images.githubusercontent.com/58472359/100222955-6ea18b00-2f4d-11eb-9daa-de8bec7775d6.png)
+	* [Interfaces SURABAYA](https://user-images.githubusercontent.com/58472359/100222965-73663f00-2f4d-11eb-8936-d000201a721e.png)
 	* Jangan lupa untuk melakukan `export proxy`, melakukan uncomment pada line `net.ipv4.ip_forward=1` di `/etc/sysctl.conf` dan menjalankan `iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE -s 192.168.0.0/16` di SURABAYA.
-	
 	* MALANG
 	<img width="496" alt="interfaces__server_MALANG" src="https://user-images.githubusercontent.com/58472359/100222976-76612f80-2f4d-11eb-98a1-451b33b01cd5.png">
 	* MOJOKERTO
 	<img width="496" alt="interfaces_server_MOJOKERTO" src="https://user-images.githubusercontent.com/58472359/100222980-782af300-2f4d-11eb-92fc-2a66c090d461.png">
 	* TUBAN
 	<img width="512" alt="interfaces_server_TUBAN" src="https://user-images.githubusercontent.com/58472359/100222984-795c2000-2f4d-11eb-93d2-5cbe91070935.png">
+
 2. Melakukan `apt-get update` pada Router dan Server kemudian melakukan instalasi pada masing-masing Server dengan cara `apt-get install isc-dhcp-server` pada TUBAN, `apt-get install squid` pada MOJOKERTO dan `apt-get install bind9 -y` pada MALANG.
 3. Karena SURABAYA ditunjuk sebagai DHCP Relay, maka lakukan juga instalasi `apt-get install isc-dhcp-relay` di SURABAYA.
+
 4. Membuat konfigurasi interfaces pada Client
 	* GRESIK
 	<img width="496" alt="interfaces_client_GRESIK" src="https://user-images.githubusercontent.com/58472359/100223111-a14b8380-2f4d-11eb-9a13-f27e7943e680.png">
