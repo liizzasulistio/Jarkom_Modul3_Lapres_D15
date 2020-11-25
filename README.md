@@ -187,24 +187,34 @@ Pada UML GRESIK dan MADIUN (client) sering force close tetapi tidak bisa di-*hal
 	* [Screenshot SIDOARJO (subnet 1) 02](https://user-images.githubusercontent.com/58472359/100224135-02c02200-2f4f-11eb-9987-50dae3863e42.png)
 	* [Screenshot BANYUWANGI (subnet 3) 01](https://user-images.githubusercontent.com/58472359/100224150-0653a900-2f4f-11eb-9349-1a001c14499f.png)
 	* [Screenshot BANYUWANGI (subnet 3) 02](https://user-images.githubusercontent.com/58472359/100224152-0784d600-2f4f-11eb-987c-4d8c639ff773.png)
-	* MADIUN (subnet 3)
-	<img width="496" alt="restart_MADIUN" src="https://user-images.githubusercontent.com/58472359/100224154-08b60300-2f4f-11eb-92a3-4018da040bbb.png">
-	<img width="512" alt="ifconfig_MADIUN" src="https://user-images.githubusercontent.com/58472359/100224156-09e73000-2f4f-11eb-9f6c-e74f48f5975c.png">
-	 Subnet | Keterangan | Screenshot 
-	--- | --- | ---
-	Subnet 1| restart di GRESIK | <img width="496" alt="restart_GRESIK" src="https://user-images.githubusercontent.com/58472359/100224057-e328f980-2f4e-11eb-903f-4b7bccb52506.png">
-	
-	
+	* [Screenshot MADIUN (subnet 3) 01](https://user-images.githubusercontent.com/58472359/100224154-08b60300-2f4f-11eb-92a3-4018da040bbb.png)
+	* [Screenshot MADIUN (subnet 3) 02](https://user-images.githubusercontent.com/58472359/100224156-09e73000-2f4f-11eb-9f6c-e74f48f5975c.png)
 10. Lakukan juga pengecekan dengan cara `cat /etc/resolv.conf` pada masing-masing client untuk mengetahui DNS mana yang dituju, jika menunjukkan `nameserver 10.151.79.130` dan `nameserver 202.46.129.2` maka ketentuan pada soal sudah terpenuhi.
-	* GRESIK
-	<img width="496" alt="cat_GRESIK" src="https://user-images.githubusercontent.com/58472359/100224336-49158100-2f4f-11eb-9e9e-fe8ceec2171f.png">
-	* SIDOARJO
-	<img width="512" alt="cat_SIDOARJO" src="https://user-images.githubusercontent.com/58472359/100224340-4a46ae00-2f4f-11eb-9545-111390bd1ec7.png">
-	* BANYUWANGI
-	<img width="496" alt="cat_BANYUWANGI" src="https://user-images.githubusercontent.com/58472359/100224347-4b77db00-2f4f-11eb-8db2-922b4c336e62.png">
-	* MADIUN
-	<img width="512" alt="cat_MADIUN" src="https://user-images.githubusercontent.com/58472359/100224350-4ca90800-2f4f-11eb-9e25-18a493bf47a5.png">
-
-
+	* [Screenshot GRESIK](https://user-images.githubusercontent.com/58472359/100224336-49158100-2f4f-11eb-9e9e-fe8ceec2171f.png)
+	* [Screenshot SIDOARJO](https://user-images.githubusercontent.com/58472359/100224340-4a46ae00-2f4f-11eb-9545-111390bd1ec7.png)
+	* [Screenshot BANYUWANGI](https://user-images.githubusercontent.com/58472359/100224347-4b77db00-2f4f-11eb-8db2-922b4c336e62.png)
+	* [Screenshot MADIUN](https://user-images.githubusercontent.com/58472359/100224350-4ca90800-2f4f-11eb-9e25-18a493bf47a5.png)
 ---
 ## Proxy Server
+7. Buat user authentication dengan ketentuan `username = userta_d15` dan `password = inipassw0rdta_d15`
+8. Pembatasan penggunaan internet pada hari Selasa - Rabu pukul 13:00 - 18:00
+9. Pembatasan penggunaan internet pada hari Selasa - Kamis pukul 21:00 - 09:00 (Jumat keesokan harinya)
+10. Setiap mengakses `google.com` akan redirect ke `monta.if.its.ac.id`
+11. Mengubah default error page squid sesuai dengan `wget 10.151.36.202/ERR_ACCESS_DENIED`
+12. Akses proxy cukup dengan mengetikkan `janganlupa-ta.d15.pw` dan memasukkan port 8080
+
+### Langkah-langkah pengerjaan:
+11. Di TUBAN buat konfigurasi username dan password dengan cara `htpasswd -c /etc/squid/passwd userta_d15` kemudian masukkan passwordnya (2 screenshot)
+12. Di TUBAN buat file `etc/squid/acl.conf` dengan isian seperti pada konfigurasi atau screenshot di bawah ini:
+	~~~
+	
+	~~~
+13. (no. 10 + isian lengkap dari etc/squid/squid.conf masih belum)
+14. Di MALANG buka `/etc/bind/named.conf.local` kemudian isikan sesuai dengan konfigurasi atau screenshot di bawah ini:
+	~~~
+	~~~
+15. Buat direktori `/etc/bind/jarkom` kemudian copy `/etc/bind/db.local` ke `/etc/bind/jarkom/janganlupa-ta.d15.pw`, kemudian isikan sesuai dengan konfigurasi atau screenshot di bawah ini:
+	~~~
+	~~~
+16. Lakukan pengecekan dengan cara terkoneksi pada proxy dan `ping janganlupa-ta.d15.pw` di terminal, seperti pada dua gambar di bawah ini (2 screenshot)
+17. Ubah konfigurasi proxy untuk mengetahui apakah berhasil menggunakan proxy jika memasukkan `janganlupa-ta.d15.pw` dan port 8080 saja (screenshot)
