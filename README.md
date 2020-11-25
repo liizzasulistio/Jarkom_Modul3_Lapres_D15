@@ -23,7 +23,7 @@
 	* `DHCP Server` TUBAN : NID_DMZ + 4 = 10.151.79.132
 ---
 ## Kendala
-Pada UML GRESIK dan MADIUN (client) sering force close tetapi tidak bisa di-halt juga, sehingga pengecekan sulit untuk dilakukan.
+Pada UML GRESIK dan MADIUN (client) sering force close tetapi tidak bisa di-*halt* juga, sehingga pengecekan sulit untuk dilakukan.
 
 ---
 ## Dynamic Host Configuration Protocol
@@ -72,9 +72,7 @@ Pada UML GRESIK dan MADIUN (client) sering force close tetapi tidak bisa di-halt
 
 ### Langkah-langkah pengerjaan:
 1. Membuat konfigurasi interfaces pada Router dan Server, kemudian jalankan `service networking restart`
-	* [Screenshot Interfaces SURABAYA (01)](https://user-images.githubusercontent.com/58472359/100222955-6ea18b00-2f4d-11eb-9daa-de8bec7775d6.png)
-	* [Screenshot Interfaces SURABAYA (02)](https://user-images.githubusercontent.com/58472359/100222965-73663f00-2f4d-11eb-8936-d000201a721e.png)
-	* SURABAYA
+	* **SURABAYA**
 	~~~
 	auto eth0
 	iface eth0 inet static
@@ -97,10 +95,10 @@ Pada UML GRESIK dan MADIUN (client) sering force close tetapi tidak bisa di-halt
 	address 10.151.79.129
 	netmask 255.255.255.248
 	~~~
+	* [Screenshot Interfaces SURABAYA (01)](https://user-images.githubusercontent.com/58472359/100222955-6ea18b00-2f4d-11eb-9daa-de8bec7775d6.png)
+	* [Screenshot Interfaces SURABAYA (02)](https://user-images.githubusercontent.com/58472359/100222965-73663f00-2f4d-11eb-8936-d000201a721e.png)
 	* Jangan lupa untuk melakukan `export proxy`, melakukan uncomment pada line `net.ipv4.ip_forward=1` di `/etc/sysctl.conf` dan menjalankan `iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE -s 192.168.0.0/16` di SURABAYA.
-	
-	* [Screenshot Interfaces MALANG](https://user-images.githubusercontent.com/58472359/100222976-76612f80-2f4d-11eb-98a1-451b33b01cd5.png)
-	* MALANG
+	* **MALANG**
 	~~~
 	auto eth0
 	iface eth0 inet static
@@ -108,23 +106,25 @@ Pada UML GRESIK dan MADIUN (client) sering force close tetapi tidak bisa di-halt
 	netmask 255.255.255.248
 	gateway 10.151.79.129
 	~~~
-	* MOJOKERTO
-	<img width="496" alt="interfaces_server_MOJOKERTO" src="https://user-images.githubusercontent.com/58472359/100222980-782af300-2f4d-11eb-92fc-2a66c090d461.png">
-	* TUBAN
-	<img width="512" alt="interfaces_server_TUBAN" src="https://user-images.githubusercontent.com/58472359/100222984-795c2000-2f4d-11eb-93d2-5cbe91070935.png">
+	* [Screenshot Interfaces MALANG](https://user-images.githubusercontent.com/58472359/100222976-76612f80-2f4d-11eb-98a1-451b33b01cd5.png)
+	* **MOJOKERTO**
+	* [Screenshot Interfaces MOJOKERTO](https://user-images.githubusercontent.com/58472359/100222980-782af300-2f4d-11eb-92fc-2a66c090d461.png)
+	* **TUBAN**
+	* [Screenshot Interfaces TUBAN](https://user-images.githubusercontent.com/58472359/100222984-795c2000-2f4d-11eb-93d2-5cbe91070935.png)
 
 2. Melakukan `apt-get update` pada Router dan Server kemudian melakukan instalasi pada masing-masing Server dengan cara `apt-get install isc-dhcp-server` pada TUBAN, `apt-get install squid` pada MOJOKERTO dan `apt-get install bind9 -y` pada MALANG.
 3. Karena SURABAYA ditunjuk sebagai DHCP Relay, maka lakukan juga instalasi `apt-get install isc-dhcp-relay` di SURABAYA.
 
 4. Membuat konfigurasi interfaces pada Client
-	* GRESIK
-	<img width="496" alt="interfaces_client_GRESIK" src="https://user-images.githubusercontent.com/58472359/100223111-a14b8380-2f4d-11eb-9a13-f27e7943e680.png">
-	* SIDOARJO
-	<img width="496" alt="interfaces_client_SIDOARJO" src="https://user-images.githubusercontent.com/58472359/100223115-a27cb080-2f4d-11eb-8147-9d515a8f5f2c.png">
-	* BANYUWANGI
-	<img width="496" alt="interfaces_client_BANYUWANGI" src="https://user-images.githubusercontent.com/58472359/100223125-a577a100-2f4d-11eb-977f-9a1912b7745f.png">
-	* MADIUN
-	<img width="512" alt="interfaces_client_MADIUN" src="https://user-images.githubusercontent.com/58472359/100223128-a6a8ce00-2f4d-11eb-909d-ed815db204b6.png">
+	* Konfigurasi (karena tidak diperbolehkan menggunakan IP statis dan bergantung pada DHCP Server yang sama, maka konfigurasinya sama)
+	~~~
+	auto eth0
+	iface eth0 inet dhcp
+	~~~
+	* [Screenshot Interfaces GRESIK](https://user-images.githubusercontent.com/58472359/100223111-a14b8380-2f4d-11eb-9a13-f27e7943e680.png)
+	* [Screenshot Interfaces SIDOARJO](https://user-images.githubusercontent.com/58472359/100223115-a27cb080-2f4d-11eb-8147-9d515a8f5f2c.png)
+	* [Screenshot Interfaces BANYUWANGI] (https://user-images.githubusercontent.com/58472359/100223125-a577a100-2f4d-11eb-977f-9a1912b7745f.png)
+	* [Screenshot Interfaces MADIUN](https://user-images.githubusercontent.com/58472359/100223128-a6a8ce00-2f4d-11eb-909d-ed815db204b6.png)
 5. Di TUBAN buka file `/etc/default/isc-dhcp-server` kemudian isikan `INTERFACES = "eth0"` seperti pada gambar di bawah ini
 <img width="496" alt="dhcp_server_TUBAN_01" src="https://user-images.githubusercontent.com/58472359/100223224-c809ba00-2f4d-11eb-99b3-4552417eacf0.png">
 6. Isikan konfigurasi seperti pada gambar atau pada potongan konfigurasi di bawah ini pada file `/etc/dchp/dhcpd.conf` di TUBAN
