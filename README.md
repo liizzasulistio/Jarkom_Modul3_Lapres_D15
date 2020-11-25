@@ -30,8 +30,10 @@ Pada UML GRESIK dan MADIUN (client) sering force close tetapi tidak bisa di-halt
 1. Membuat topologi jaringan sesuai dengan gambar berikut, konfigurasi untuk topologinya dapat dilihat pada [topologi.sh](https://github.com/liizzasulistio/Jarkom_Modul3_Lapres_D15/blob/main/topologi.sh) atau pada gambar di bawah ini
 	* Gambar Topologi 
 	<img width="740" alt="topologi_gambar" src="https://user-images.githubusercontent.com/58472359/100222562-dc00ec00-2f4c-11eb-865f-68e13b26ef59.png">
+	
 	* Konfigurasi Topologi 
 	<img width="1347" alt="topologi" src="https://user-images.githubusercontent.com/58472359/100222567-dc998280-2f4c-11eb-9ad5-cb5c6ec841a4.png">
+	
 	* Buat juga script untuk halt UML jika telah selesai digunakan [bye.sh](https://github.com/liizzasulistio/Jarkom_Modul3_Lapres_D15/blob/main/bye.sh)
 	<img width="682" alt="bye" src="https://user-images.githubusercontent.com/58472359/100222784-2c784980-2f4d-11eb-86d1-d708e1330096.png">
 2. Seluruh client tidak diperbolehkan menggunakan IP statis dengan SURABAYA ditunjuk sebagai `DHCP Relay`
