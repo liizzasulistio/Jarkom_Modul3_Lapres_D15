@@ -128,17 +128,16 @@ Pada UML GRESIK dan MADIUN (client) sering force close tetapi tidak bisa di-*hal
 5. Di TUBAN buka file `/etc/default/isc-dhcp-server` kemudian isikan `INTERFACES = "eth0"` seperti pada gambar di bawah ini
 <img width="496" alt="dhcp_server_TUBAN_01" src="https://user-images.githubusercontent.com/58472359/100223224-c809ba00-2f4d-11eb-99b3-4552417eacf0.png">
 6. Isikan konfigurasi seperti pada gambar atau pada potongan konfigurasi di bawah ini pada file `/etc/dchp/dhcpd.conf` di TUBAN
-	* Screenshot
-<img width="496" alt="dhcp_server_TUBAN_02" src="https://user-images.githubusercontent.com/58472359/100223253-d1932200-2f4d-11eb-8fd4-88388d64a15c.png">	<img width="512" alt="dhcp_server_TUBAN_03" src="https://user-images.githubusercontent.com/58472359/100223258-d35ce580-2f4d-11eb-83ae-a0179e5989c4.png">
-<img width="512" alt="dhcp_server_TUBAN_04" src="https://user-images.githubusercontent.com/58472359/100223263-d48e1280-2f4d-11eb-9c71-bb0dacf5932a.png">
-	
-* Konfigurasi untuk subnet 2 (dari Server ke Router)
+	* Screenshot DHCP Server di TUBAN (1)
+	<img width="496" alt="dhcp_server_TUBAN_02" src="https://user-images.githubusercontent.com/58472359/100223253-d1932200-2f4d-11eb-8fd4-88388d64a15c.png">
+	* [Screenshot DHCP Server di TUBAN (2)](https://user-images.githubusercontent.com/58472359/100223258-d35ce580-2f4d-11eb-83ae-a0179e5989c4.png)
+	* [Screenshot DHCP Server di TUBAN (3)](https://user-images.githubusercontent.com/58472359/100223263-d48e1280-2f4d-11eb-9c71-bb0dacf5932a.png)
+	* Konfigurasi untuk subnet 2 (dari Server ke Router)
 	~~~
 	subnet 10.151.79.128 netmask 255.255.255.248
 	{
 	}
 	~~~
-	
 	* Konfigurasi untuk subnet 1 (dengan ketentuan seperti pada soal di atas)
 	~~~
 	subnet 192.168.0.0 netmask 255.255.255.0
@@ -152,7 +151,6 @@ Pada UML GRESIK dan MADIUN (client) sering force close tetapi tidak bisa di-*hal
 		max-lease-time 300;
 	}
 	~~~
-	
 	* Konfigurasi untuk subnet 3 (dengan ketentuan seperti pada soal di atas)
 	~~~
 	subnet 192.168.1.0 netmask 255.255.255.0
