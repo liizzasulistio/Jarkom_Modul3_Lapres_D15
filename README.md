@@ -31,11 +31,39 @@ Pada UML GRESIK dan MADIUN (client) sering force close tetapi tidak bisa di-halt
 	* Gambar Topologi 
 	<img width="740" alt="topologi_gambar" src="https://user-images.githubusercontent.com/58472359/100222562-dc00ec00-2f4c-11eb-865f-68e13b26ef59.png">
 	
-	* Konfigurasi Topologi 
-	<img width="1347" alt="topologi" src="https://user-images.githubusercontent.com/58472359/100222567-dc998280-2f4c-11eb-9ad5-cb5c6ec841a4.png">
+	* [Konfigurasi Topologi](https://user-images.githubusercontent.com/58472359/100222567-dc998280-2f4c-11eb-9ad5-cb5c6ec841a4.png)
+	~~~
+	# switch
+	uml_switch -unix switch1 > /dev/null < /dev/null &
+	uml_switch -unix switch2 > /dev/null < /dev/null &
+	uml_switch -unix switch3 > /dev/null < /dev/null &
+
+	# router
+	xterm -T SURABAYA -e linux ubd0=SURABAYA,jarkom umid=SURABAYA eth0=tuntap,,,10.151.78.65 eth1=daemon,,,switch1 eth2=daemon,,,switch3 eth3=daemon,,,switch2 mem=256M &
+
+	# server
+	xterm -T MALANG -e linux ubd0=MALANG,jarkom umid=MALANG eth0=daemon,,,switch2 mem=160M &
+	xterm -T TUBAN -e linux ubd0=TUBAN,jarkom umid=TUBAN eth0=daemon,,,switch2 mem=128M &
+	xterm -T MOJOKERTO -e linux ubd0=MOJOKERTO,jarkom umid=MOJOKERTO eth0=daemon,,,switch2 mem=128M &
+
+	# client
+	xterm -T GRESIK -e linux ubd0=GRESIK,jarkom umid=GRESIK eth0=daemon,,,switch1 mem=64M &
+	xterm -T SIDOARJO -e linux ubd0=SIDOARJO,jarkom umid=SIDOARJO eth0=daemon,,,switch1 mem=64M &
+	xterm -T BANYUWANGI -e linux ubd0=BANYUWANGI,jarkom umid=BANYUWANGI eth0=daemon,,,switch3 mem=64M &
+	xterm -T MADIUN -e linux ubd0=MADIUN,jarkom umid=MADIUN eth0=daemon,,,switch3 mem=64M &
+	~~~
 	
-	* Buat juga script untuk halt UML jika telah selesai digunakan [bye.sh](https://github.com/liizzasulistio/Jarkom_Modul3_Lapres_D15/blob/main/bye.sh)
-	<img width="682" alt="bye" src="https://user-images.githubusercontent.com/58472359/100222784-2c784980-2f4d-11eb-86d1-d708e1330096.png">
+	* Buat juga script untuk halt UML jika telah selesai digunakan [bye.sh](https://github.com/liizzasulistio/Jarkom_Modul3_Lapres_D15/blob/main/bye.sh) atau [screenshot bye](https://user-images.githubusercontent.com/58472359/100222784-2c784980-2f4d-11eb-86d1-d708e1330096.png)
+	~~~
+	uml_mconsole SURABAYA halt
+	uml_mconsole MALANG halt
+	uml_mconsole TUBAN halt
+	uml_mconsole MOJOKERTO halt
+	uml_mconsole GRESIK halt
+	uml_mconsole SIDOARJO halt
+	uml_mconsole BANYUWANGI halt
+	uml_mconsole MADIUN halt
+	~~~
 2. Seluruh client tidak diperbolehkan menggunakan IP statis dengan SURABAYA ditunjuk sebagai `DHCP Relay`
 3. Client pada subnet 1 mendapatkan range IP dari 192.168.0.10 sampai 192.168.0.100 dan 192.168.0.110 sampai 192.168.0.200
 4. Client pada subnet 3 mendapatkan range IP dari 192.168.1.50 sampai 192.168.1.70
@@ -44,11 +72,42 @@ Pada UML GRESIK dan MADIUN (client) sering force close tetapi tidak bisa di-halt
 
 ### Langkah-langkah pengerjaan:
 1. Membuat konfigurasi interfaces pada Router dan Server, kemudian jalankan `service networking restart`
-	* [Interfaces SURABAYA](https://user-images.githubusercontent.com/58472359/100222955-6ea18b00-2f4d-11eb-9daa-de8bec7775d6.png)
-	* [Interfaces SURABAYA](https://user-images.githubusercontent.com/58472359/100222965-73663f00-2f4d-11eb-8936-d000201a721e.png)
+	* [Screenshot Interfaces SURABAYA (01)](https://user-images.githubusercontent.com/58472359/100222955-6ea18b00-2f4d-11eb-9daa-de8bec7775d6.png)
+	* [Screenshot Interfaces SURABAYA (02)](https://user-images.githubusercontent.com/58472359/100222965-73663f00-2f4d-11eb-8936-d000201a721e.png)
+	* SURABAYA
+	~~~
+	auto eth0
+	iface eth0 inet static
+	address 10.151.78.66
+	netmask 255.255.255.252
+	gateway 10.151.78.65
+	
+	auto eth1
+	iface eth1 inet static
+	address 192.168.0.1
+	netmask 255.255.255.0
+	
+	auto eth2
+	iface eth2 inet static
+	address 192.168.1.1
+	netmask 255.255.255.0
+	
+	auto eth3
+	iface eth3 inet static
+	address 10.151.79.129
+	netmask 255.255.255.248
+	~~~
 	* Jangan lupa untuk melakukan `export proxy`, melakukan uncomment pada line `net.ipv4.ip_forward=1` di `/etc/sysctl.conf` dan menjalankan `iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE -s 192.168.0.0/16` di SURABAYA.
+	
+	* [Screenshot Interfaces MALANG](https://user-images.githubusercontent.com/58472359/100222976-76612f80-2f4d-11eb-98a1-451b33b01cd5.png)
 	* MALANG
-	<img width="496" alt="interfaces__server_MALANG" src="https://user-images.githubusercontent.com/58472359/100222976-76612f80-2f4d-11eb-98a1-451b33b01cd5.png">
+	~~~
+	auto eth0
+	iface eth0 inet static
+	address 10.151.79.130
+	netmask 255.255.255.248
+	gateway 10.151.79.129
+	~~~
 	* MOJOKERTO
 	<img width="496" alt="interfaces_server_MOJOKERTO" src="https://user-images.githubusercontent.com/58472359/100222980-782af300-2f4d-11eb-92fc-2a66c090d461.png">
 	* TUBAN
