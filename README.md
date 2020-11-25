@@ -47,7 +47,9 @@ Pada UML GRESIK dan MADIUN (client) sering force close tetapi tidak bisa di-halt
 	* SURABAYA
 	<img width="496" alt="interfaces_router_SURABAYA_01" src="https://user-images.githubusercontent.com/58472359/100222955-6ea18b00-2f4d-11eb-9daa-de8bec7775d6.png">
 <img width="496" alt="interfaces_router_SURABAYA_02" src="https://user-images.githubusercontent.com/58472359/100222965-73663f00-2f4d-11eb-8936-d000201a721e.png">
+
 	* Jangan lupa untuk melakukan `export proxy`, melakukan uncomment pada line `net.ipv4.ip_forward=1` di `/etc/sysctl.conf` dan menjalankan `iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE -s 192.168.0.0/16` di SURABAYA.
+	
 	* MALANG
 	<img width="496" alt="interfaces__server_MALANG" src="https://user-images.githubusercontent.com/58472359/100222976-76612f80-2f4d-11eb-98a1-451b33b01cd5.png">
 	* MOJOKERTO
