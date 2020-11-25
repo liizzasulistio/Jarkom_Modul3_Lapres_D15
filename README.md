@@ -191,7 +191,7 @@ Pada UML GRESIK dan MADIUN (client) sering force close tetapi tidak bisa di-*hal
 	<img width="496" alt="restart_MADIUN" src="https://user-images.githubusercontent.com/58472359/100224154-08b60300-2f4f-11eb-92a3-4018da040bbb.png">
 	<img width="512" alt="ifconfig_MADIUN" src="https://user-images.githubusercontent.com/58472359/100224156-09e73000-2f4f-11eb-9f6c-e74f48f5975c.png">
 	 Subnet | Keterangan | Screenshot 
-	---|---|---
+	--- | --- | ---
 	Subnet 1| restart di GRESIK | <img width="496" alt="restart_GRESIK" src="https://user-images.githubusercontent.com/58472359/100224057-e328f980-2f4e-11eb-903f-4b7bccb52506.png">
 	
 	
