@@ -253,5 +253,6 @@ Pada UML GRESIK dan MADIUN (client) sering force close tetapi tidak bisa di-*hal
 17. Lakukan pengecekan dengan cara terkoneksi pada proxy dan `ping janganlupa-ta.d15.pw` di terminal, seperti pada dua gambar di bawah ini
 <img width="780" alt="Akses_Proxy_01" src="https://user-images.githubusercontent.com/58472359/100533285-56738980-3235-11eb-939e-54d72b30b111.png">
 <img width="717" alt="Akses_Proxy_02" src="https://user-images.githubusercontent.com/58472359/100533287-57a4b680-3235-11eb-8f4d-543aeda31c96.png">
+
 18. Ubah konfigurasi proxy untuk mengetahui apakah berhasil menggunakan proxy jika memasukkan `janganlupa-ta.d15.pw` dan port 8080 saja
 <img width="780" alt="Akses_Proxy_03" src="https://user-images.githubusercontent.com/58472359/100533288-583d4d00-3235-11eb-821e-022b76e78c05.png">
