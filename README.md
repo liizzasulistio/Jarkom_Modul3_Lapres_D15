@@ -207,7 +207,7 @@ Pada UML GRESIK dan MADIUN (client) sering force close tetapi tidak bisa di-*hal
 11. Di TUBAN buat konfigurasi username dan password dengan cara `htpasswd -c /etc/squid/passwd userta_d15` kemudian masukkan passwordnya. Jika berhasil, maka pada saat mengakses proxy, proxy akan meminta username dan password.
 <img width="512" alt="Proxy_Username_Password_01" src="https://user-images.githubusercontent.com/58472359/100533326-99cdf800-3235-11eb-8194-1ed963862e9c.png">
 <img width="532" alt="Proxy_Username_Password_02" src="https://user-images.githubusercontent.com/58472359/100533321-963a7100-3235-11eb-8721-524b4eceb35b.png">
-12. Di TUBAN buat file `etc/squid/acl.conf` dengan isian seperti pada konfigurasi atau screenshot di bawah ini:
+12. Di TUBAN buat file `etc/squid/acl.conf` dengan isian seperti pada konfigurasi atau screenshot di bawah ini
 	* Konfigurasi
 	~~~
 	acl AVAILABLE_WORKING time TW 13:00-18:00
