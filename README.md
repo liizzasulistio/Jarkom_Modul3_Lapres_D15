@@ -218,8 +218,8 @@ Pada UML GRESIK dan MADIUN (client) sering force close tetapi tidak bisa di-*hal
 	~~~
 	acl  BLACKLISTS google.com
 	
-	~~~
-	<img width="1495" alt="Redirect_Monta" src="https://user-images.githubusercontent.com/58472359/100533426-a7d04880-3236-11eb-8a99-57e57bdcc116.png">
+	~~~	
+<img width="1495" alt="Redirect_Monta" src="https://user-images.githubusercontent.com/58472359/100533426-a7d04880-3236-11eb-8a99-57e57bdcc116.png">
 14. Konfigurasi dan screenshot keseluruhan pada `etc/squid/squid/.conf`
 	~~~
 	~~~
