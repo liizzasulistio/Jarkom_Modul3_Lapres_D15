@@ -219,8 +219,8 @@ Pada UML GRESIK dan MADIUN (client) sering force close tetapi tidak bisa di-*hal
 
 ### Langkah-langkah pengerjaan:
 11. Di MOJOKERTO buat konfigurasi username dan password dengan cara `htpasswd -c /etc/squid/passwd userta_d15` kemudian masukkan passwordnya. Jika berhasil, maka pada saat mengakses proxy, proxy akan meminta username dan password.
-<img width="512" alt="Proxy_Username_Password_01" src="https://user-images.githubusercontent.com/58472359/100533326-99cdf800-3235-11eb-8194-1ed963862e9c.png">
-<img width="532" alt="Proxy_Username_Password_02" src="https://user-images.githubusercontent.com/58472359/100533321-963a7100-3235-11eb-8721-524b4eceb35b.png">
+![Proxy Username dan Password (01)](https://user-images.githubusercontent.com/58472359/100533326-99cdf800-3235-11eb-8194-1ed963862e9c.png)
+![Proxy Username dan Password (02)](https://user-images.githubusercontent.com/58472359/100533321-963a7100-3235-11eb-8721-524b4eceb35b.png)
 
 12. Di MOJOKERTO buat file `etc/squid/acl.conf` dengan isian seperti pada konfigurasi atau screenshot di bawah ini
 	* Konfigurasi
@@ -229,7 +229,8 @@ Pada UML GRESIK dan MADIUN (client) sering force close tetapi tidak bisa di-*hal
 	acl AVAILABLE_GOOGLE_NIGHT time TWH 21:00-23:59
 	acl AVAILABLE_GOOGLE_DAY time WHF 00:00-09:00
 	~~~
-	* [Screenshot Proxy Waktu](https://user-images.githubusercontent.com/58472359/100533324-976b9e00-3235-11eb-8d84-698717eaf7f9.png)
+	* Screenshot Konfigurasi Proxy untuk Waktu
+	![Screenshot Proxy Waktu](https://user-images.githubusercontent.com/58472359/100533324-976b9e00-3235-11eb-8d84-698717eaf7f9.png)
 	
 13. Konfigurasi di `/etc/squid/squid.conf` dan tampilan ketika mencoba mengakses google.com dan _redirect_ monta.if.its.ac.id
 	* Konfigurasi
@@ -254,14 +255,15 @@ Pada UML GRESIK dan MADIUN (client) sering force close tetapi tidak bisa di-*hal
 		- Ganti nama file `error.html` manjadi `ERR_DNS_FAIL`
 		- Restart squid.
 	
-	- Screenshot
+	- Screenshot Error Page
 	![Screenshot Error Page](https://user-images.githubusercontent.com/24503760/100541230-ef75c500-3274-11eb-8169-33abfc7fbd92.png)
 	
 15. Screenshot keseluruhan`/etc/squid/squid.conf` di MOJOKERTO
-<img width="496" alt="MOJOKERTO_Proxy_01" src="https://user-images.githubusercontent.com/58472359/100544545-1d650480-3289-11eb-9d44-37133b84bd01.png">
-<img width="496" alt="MOJOKERTO_Proxy_02" src="https://user-images.githubusercontent.com/58472359/100544543-1a6a1400-3289-11eb-920e-dd442e39b3c6.png">
+![Screenshot Konfigurasi Squid di MOJOKERTO (01)](https://user-images.githubusercontent.com/58472359/100544545-1d650480-3289-11eb-9d44-37133b84bd01.png)
+![Screenshot Konfigurasi Squid di MOJOKERTO (02)](https://user-images.githubusercontent.com/58472359/100544543-1a6a1400-3289-11eb-920e-dd442e39b3c6.png)
 
 16. Di MALANG buka `/etc/bind/named.conf.local` kemudian isikan sesuai dengan konfigurasi atau screenshot di bawah ini:
+	* Konfigurasi
 	~~~
 	...
 	zone "janganlupa-ta.d15.pw
@@ -270,8 +272,10 @@ Pada UML GRESIK dan MADIUN (client) sering force close tetapi tidak bisa di-*hal
 		file "/etc/bind/jarkom/janganlupa-ta.d15.pw";
 	};
 	~~~
-	<img width="496" alt="DNS_Server_Malang_01" src="https://user-images.githubusercontent.com/58472359/100533293-5c696a80-3235-11eb-8271-d1b9042a0cb6.png">
+	* Screenshot DNS Server di MALANG (01)
+	![Screenshot DNS Server di MALANG (01)](https://user-images.githubusercontent.com/58472359/100533293-5c696a80-3235-11eb-8271-d1b9042a0cb6.png)
 17. Buat direktori `/etc/bind/jarkom` kemudian copy `/etc/bind/db.local` ke `/etc/bind/jarkom/janganlupa-ta.d15.pw`, kemudian isikan sesuai dengan konfigurasi atau screenshot di bawah ini, dan restart:
+	* Konfigurasi
 	~~~
 	...
 	@	IN	 SOA	janganlupa-ta.d15.pw. root.janganlupa-ta.d15.pw.
@@ -279,11 +283,12 @@ Pada UML GRESIK dan MADIUN (client) sering force close tetapi tidak bisa di-*hal
 	@	IN	 NS	janganlupa-ta.d15.pw.
 	@	IN	 A	10.151.79.131 ;IP MOJOKERTO
 	~~~
-	<img width="496" alt="DNS_Server_Malang_02" src="https://user-images.githubusercontent.com/58472359/100533294-5d020100-3235-11eb-89fd-970ac18475e5.png">
+	* Screenshot DNS Server di MALANG (02)
+	![Screenshot DNS Server di MALANG (02)](https://user-images.githubusercontent.com/58472359/100533294-5d020100-3235-11eb-89fd-970ac18475e5.png)
 	
 18. Lakukan pengecekan dengan cara terkoneksi pada proxy dan `ping janganlupa-ta.d15.pw` di terminal, seperti pada dua gambar di bawah ini
-<img width="780" alt="Akses_Proxy_01" src="https://user-images.githubusercontent.com/58472359/100533285-56738980-3235-11eb-939e-54d72b30b111.png">
-<img width="717" alt="Akses_Proxy_02" src="https://user-images.githubusercontent.com/58472359/100533287-57a4b680-3235-11eb-8f4d-543aeda31c96.png">
+	![Screenshot Akses Proxy (01)](https://user-images.githubusercontent.com/58472359/100533285-56738980-3235-11eb-939e-54d72b30b111.png)
+	![Screenshot Akses Proxy (01)](https://user-images.githubusercontent.com/58472359/100533287-57a4b680-3235-11eb-8f4d-543aeda31c96.png)
 
 19. Ubah konfigurasi proxy untuk mengetahui apakah berhasil menggunakan proxy jika memasukkan `janganlupa-ta.d15.pw` dan port 8080 saja
-<img width="780" alt="Akses_Proxy_03" src="https://user-images.githubusercontent.com/58472359/100533288-583d4d00-3235-11eb-821e-022b76e78c05.png">
+	![Screenshot Akses Proxy (03)](https://user-images.githubusercontent.com/58472359/100533288-583d4d00-3235-11eb-821e-022b76e78c05.png)
