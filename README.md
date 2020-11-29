@@ -210,11 +210,12 @@ Pada UML GRESIK dan MADIUN (client) sering force close tetapi tidak bisa di-*hal
 12. Di TUBAN buat file `etc/squid/acl.conf` dengan isian seperti pada konfigurasi atau screenshot di bawah ini:
 <img width="512" alt="Proxy_Waktu" src="https://user-images.githubusercontent.com/58472359/100533324-976b9e00-3235-11eb-8d84-698717eaf7f9.png">
 13. Konfigurasi di `/etc/squid/squid.conf` dan tampilan ketika mencoba mengakses google.com dan _redirect_ monta.if.its.ac.id
+	* Konfigurasi
 	~~~
 	...
 	acl  BLACKLISTS google.com
 
-	~~~	
+	~~~
 <img width="1495" alt="Redirect_Monta" src="https://user-images.githubusercontent.com/58472359/100533426-a7d04880-3236-11eb-8a99-57e57bdcc116.png">
 14. Konfigurasi dan screenshot keseluruhan pada `etc/squid/squid/.conf`
 	~~~
