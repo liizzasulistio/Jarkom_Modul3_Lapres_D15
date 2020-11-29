@@ -221,12 +221,16 @@ Pada UML GRESIK dan MADIUN (client) sering force close tetapi tidak bisa di-*hal
 	* Konfigurasi
 	~~~
 	...
-	acl  BLACKLISTS google.com
-
+	acl  BLACKLISTS dstdomain google.com
+	deny_info http://monta.if.its.ac.id BLACKLISTS
+	http_access deny BLACKLISTS AVAILABLE_GOOGLE_NIGHT
+	http_access deny BLACKLISTS AVAILABLE_GOOGLE_DAY
+	http_reply_access deny BLACKLISTS
 	~~~
-	* [Screenshot Redirect Monta](https://user-images.githubusercontent.com/58472359/100533426-a7d04880-3236-11eb-8a99-57e57bdcc116.png)
+	* Screenshot Redirect Monta 
+	![Screenshot Redirect Monta](https://user-images.githubusercontent.com/58472359/100533426-a7d04880-3236-11eb-8a99-57e57bdcc116.png)
 	
-14. Konfigurasi dan screenshot keseluruhan pada `etc/squid/squid.conf` di MOJOKERTO
+14. Konfigurasi error pada `etc/squid/squid.conf` di MOJOKERTO
 
 	- Konfigurasi
 		- Tambahkan baris `error_directory /usr/share/squid/error403`
@@ -238,7 +242,10 @@ Pada UML GRESIK dan MADIUN (client) sering force close tetapi tidak bisa di-*hal
 	
 	- Screenshot
 	![Screenshot Error Page](https://user-images.githubusercontent.com/24503760/100541230-ef75c500-3274-11eb-8169-33abfc7fbd92.png)
-15. Di MALANG buka `/etc/bind/named.conf.local` kemudian isikan sesuai dengan konfigurasi atau screenshot di bawah ini:
+15. Screenshot keseluruhan`/etc/squid/squid.conf` di MOJOKERTO
+<img width="496" alt="MOJOKERTO_Proxy_01" src="https://user-images.githubusercontent.com/58472359/100544545-1d650480-3289-11eb-9d44-37133b84bd01.png">
+<img width="496" alt="MOJOKERTO_Proxy_02" src="https://user-images.githubusercontent.com/58472359/100544543-1a6a1400-3289-11eb-920e-dd442e39b3c6.png">
+16. Di MALANG buka `/etc/bind/named.conf.local` kemudian isikan sesuai dengan konfigurasi atau screenshot di bawah ini:
 	~~~
 	...
 	zone "janganlupa-ta.d15.pw
@@ -248,7 +255,7 @@ Pada UML GRESIK dan MADIUN (client) sering force close tetapi tidak bisa di-*hal
 	};
 	~~~
 	<img width="496" alt="DNS_Server_Malang_01" src="https://user-images.githubusercontent.com/58472359/100533293-5c696a80-3235-11eb-8271-d1b9042a0cb6.png">
-16. Buat direktori `/etc/bind/jarkom` kemudian copy `/etc/bind/db.local` ke `/etc/bind/jarkom/janganlupa-ta.d15.pw`, kemudian isikan sesuai dengan konfigurasi atau screenshot di bawah ini, dan restart:
+17. Buat direktori `/etc/bind/jarkom` kemudian copy `/etc/bind/db.local` ke `/etc/bind/jarkom/janganlupa-ta.d15.pw`, kemudian isikan sesuai dengan konfigurasi atau screenshot di bawah ini, dan restart:
 	~~~
 	...
 	@	IN	 SOA	janganlupa-ta.d15.pw. root.janganlupa-ta.d15.pw.
@@ -257,9 +264,10 @@ Pada UML GRESIK dan MADIUN (client) sering force close tetapi tidak bisa di-*hal
 	@	IN	 A	10.151.79.131 ;IP MOJOKERTO
 	~~~
 	<img width="496" alt="DNS_Server_Malang_02" src="https://user-images.githubusercontent.com/58472359/100533294-5d020100-3235-11eb-89fd-970ac18475e5.png">
-17. Lakukan pengecekan dengan cara terkoneksi pada proxy dan `ping janganlupa-ta.d15.pw` di terminal, seperti pada dua gambar di bawah ini
+	
+18. Lakukan pengecekan dengan cara terkoneksi pada proxy dan `ping janganlupa-ta.d15.pw` di terminal, seperti pada dua gambar di bawah ini
 <img width="780" alt="Akses_Proxy_01" src="https://user-images.githubusercontent.com/58472359/100533285-56738980-3235-11eb-939e-54d72b30b111.png">
 <img width="717" alt="Akses_Proxy_02" src="https://user-images.githubusercontent.com/58472359/100533287-57a4b680-3235-11eb-8f4d-543aeda31c96.png">
 
-18. Ubah konfigurasi proxy untuk mengetahui apakah berhasil menggunakan proxy jika memasukkan `janganlupa-ta.d15.pw` dan port 8080 saja
+19. Ubah konfigurasi proxy untuk mengetahui apakah berhasil menggunakan proxy jika memasukkan `janganlupa-ta.d15.pw` dan port 8080 saja
 <img width="780" alt="Akses_Proxy_03" src="https://user-images.githubusercontent.com/58472359/100533288-583d4d00-3235-11eb-821e-022b76e78c05.png">
