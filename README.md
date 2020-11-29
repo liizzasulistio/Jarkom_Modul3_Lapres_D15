@@ -226,11 +226,18 @@ Pada UML GRESIK dan MADIUN (client) sering force close tetapi tidak bisa di-*hal
 	~~~
 	* [Screenshot Redirect Monta](https://user-images.githubusercontent.com/58472359/100533426-a7d04880-3236-11eb-8a99-57e57bdcc116.png)
 	
-14. Konfigurasi dan screenshot keseluruhan pada `etc/squid/squid/.conf`
-	* Konfigurasi
-	~~~
-	~~~
-	* Screenshot
+14. Konfigurasi dan screenshot keseluruhan pada `etc/squid/squid.conf`
+
+	- Konfigurasi
+		- Tambahkan baris `error_directory /usr/share/squid/error403`
+		- Ekstrak file tar.gz yang diberikan pada `/usr/share/squid/`
+		- Unggah file error.jpg di website eksternal
+		- Pada file error.html, ganti `url('error.jpg')` dengan `url([Hotlink Image])`. Pada kasus kami, kami menggunakan [http://167.99.66.187:9999/error.jpg](http://167.99.66.187:9999/error.jpg).
+		- Ganti nama file `error.html` manjadi `ERR_DNS_FAIL`
+		- Restart squid.
+	
+	- Screenshot
+	![Screenshot Error Page](https://user-images.githubusercontent.com/24503760/100541230-ef75c500-3274-11eb-8169-33abfc7fbd92.png)
 15. Di MALANG buka `/etc/bind/named.conf.local` kemudian isikan sesuai dengan konfigurasi atau screenshot di bawah ini:
 	~~~
 	...
