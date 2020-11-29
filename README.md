@@ -29,9 +29,10 @@ Pada UML GRESIK dan MADIUN (client) sering force close tetapi tidak bisa di-*hal
 ## Dynamic Host Configuration Protocol
 1. Membuat topologi jaringan sesuai dengan gambar berikut, konfigurasi untuk topologinya dapat dilihat pada [topologi.sh](https://github.com/liizzasulistio/Jarkom_Modul3_Lapres_D15/blob/main/topologi.sh) atau pada gambar di bawah ini
 	* Gambar Topologi 
-	<img width="740" alt="topologi_gambar" src="https://user-images.githubusercontent.com/58472359/100222562-dc00ec00-2f4c-11eb-865f-68e13b26ef59.png">
-	
-	* [Konfigurasi Topologi](https://user-images.githubusercontent.com/58472359/100222567-dc998280-2f4c-11eb-9ad5-cb5c6ec841a4.png)
+	![Gambar Topologi](https://user-images.githubusercontent.com/58472359/100222562-dc00ec00-2f4c-11eb-865f-68e13b26ef59.png)
+	* Screenshot Konfigurasi Topologi
+	![Konfigurasi Topologi](https://user-images.githubusercontent.com/58472359/100222567-dc998280-2f4c-11eb-9ad5-cb5c6ec841a4.png)
+	* Konfigurasi Topologi
 	~~~
 	# switch
 	uml_switch -unix switch1 > /dev/null < /dev/null &
@@ -53,7 +54,7 @@ Pada UML GRESIK dan MADIUN (client) sering force close tetapi tidak bisa di-*hal
 	xterm -T MADIUN -e linux ubd0=MADIUN,jarkom umid=MADIUN eth0=daemon,,,switch3 mem=64M &
 	~~~
 	
-	* Buat juga script untuk halt UML jika telah selesai digunakan [bye.sh](https://github.com/liizzasulistio/Jarkom_Modul3_Lapres_D15/blob/main/bye.sh) atau [screenshot bye](https://user-images.githubusercontent.com/58472359/100222784-2c784980-2f4d-11eb-86d1-d708e1330096.png)
+	* Buat juga script untuk halt UML jika telah selesai digunakan [bye.sh](https://github.com/liizzasulistio/Jarkom_Modul3_Lapres_D15/blob/main/bye.sh) 
 	~~~
 	uml_mconsole SURABAYA halt
 	uml_mconsole MALANG halt
@@ -64,6 +65,7 @@ Pada UML GRESIK dan MADIUN (client) sering force close tetapi tidak bisa di-*hal
 	uml_mconsole BANYUWANGI halt
 	uml_mconsole MADIUN halt
 	~~~
+	* ![Screenshot Bye](https://user-images.githubusercontent.com/58472359/100222784-2c784980-2f4d-11eb-86d1-d708e1330096.png)
 2. Seluruh client tidak diperbolehkan menggunakan IP statis dengan SURABAYA ditunjuk sebagai `DHCP Relay`
 3. Client pada subnet 1 mendapatkan range IP dari 192.168.0.10 sampai 192.168.0.100 dan 192.168.0.110 sampai 192.168.0.200
 4. Client pada subnet 3 mendapatkan range IP dari 192.168.1.50 sampai 192.168.1.70
@@ -242,9 +244,11 @@ Pada UML GRESIK dan MADIUN (client) sering force close tetapi tidak bisa di-*hal
 	
 	- Screenshot
 	![Screenshot Error Page](https://user-images.githubusercontent.com/24503760/100541230-ef75c500-3274-11eb-8169-33abfc7fbd92.png)
+	
 15. Screenshot keseluruhan`/etc/squid/squid.conf` di MOJOKERTO
 <img width="496" alt="MOJOKERTO_Proxy_01" src="https://user-images.githubusercontent.com/58472359/100544545-1d650480-3289-11eb-9d44-37133b84bd01.png">
 <img width="496" alt="MOJOKERTO_Proxy_02" src="https://user-images.githubusercontent.com/58472359/100544543-1a6a1400-3289-11eb-920e-dd442e39b3c6.png">
+
 16. Di MALANG buka `/etc/bind/named.conf.local` kemudian isikan sesuai dengan konfigurasi atau screenshot di bawah ini:
 	~~~
 	...
