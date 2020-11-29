@@ -97,9 +97,8 @@ Pada UML GRESIK dan MADIUN (client) sering force close tetapi tidak bisa di-*hal
 	address 10.151.79.129
 	netmask 255.255.255.248
 	~~~
-	* Screenshot Interface SURABAYA (01)
+	* Screenshot Interface SURABAYA
 	![Screenshot Interfaces SURABAYA (01)](https://user-images.githubusercontent.com/58472359/100222955-6ea18b00-2f4d-11eb-9daa-de8bec7775d6.png)
-	* Screenshot Interface SURABAYA (02)
 	![Screenshot Interfaces SURABAYA (02)](https://user-images.githubusercontent.com/58472359/100222965-73663f00-2f4d-11eb-8936-d000201a721e.png)
 	* Jangan lupa untuk melakukan `export proxy`, melakukan uncomment pada line `net.ipv4.ip_forward=1` di `/etc/sysctl.conf` dan menjalankan `iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE -s 192.168.0.0/16` di SURABAYA.
 	* **MALANG**
@@ -152,9 +151,10 @@ Pada UML GRESIK dan MADIUN (client) sering force close tetapi tidak bisa di-*hal
 	![Screenshot Interfaces MADIUN](https://user-images.githubusercontent.com/58472359/100223128-a6a8ce00-2f4d-11eb-909d-ed815db204b6.png)
 5. Di TUBAN buka file `/etc/default/isc-dhcp-server` kemudian isikan `INTERFACES = "eth0"` seperti pada gambar di bawah ini:<img width="496" alt="dhcp_server_TUBAN_01" src="https://user-images.githubusercontent.com/58472359/100223224-c809ba00-2f4d-11eb-99b3-4552417eacf0.png">
 6. Isikan konfigurasi seperti pada gambar atau pada potongan konfigurasi di bawah ini pada file `/etc/dchp/dhcpd.conf` di TUBAN	
-	* [Screenshot DHCP Server di TUBAN (1)](https://user-images.githubusercontent.com/58472359/100223253-d1932200-2f4d-11eb-8fd4-88388d64a15c.png)
-	* [Screenshot DHCP Server di TUBAN (2)](https://user-images.githubusercontent.com/58472359/100223258-d35ce580-2f4d-11eb-83ae-a0179e5989c4.png)
-	* [Screenshot DHCP Server di TUBAN (3)](https://user-images.githubusercontent.com/58472359/100223263-d48e1280-2f4d-11eb-9c71-bb0dacf5932a.png)
+	* Screenshot DHCP Server di TUBAN
+	![Screenshot DHCP Server di TUBAN (1)](https://user-images.githubusercontent.com/58472359/100223253-d1932200-2f4d-11eb-8fd4-88388d64a15c.png)
+	![Screenshot DHCP Server di TUBAN (2)](https://user-images.githubusercontent.com/58472359/100223258-d35ce580-2f4d-11eb-83ae-a0179e5989c4.png)
+	![Screenshot DHCP Server di TUBAN (3)](https://user-images.githubusercontent.com/58472359/100223263-d48e1280-2f4d-11eb-9c71-bb0dacf5932a.png)
 	* Konfigurasi untuk subnet 2 (dari Server ke Router)
 	~~~
 	subnet 10.151.79.128 netmask 255.255.255.248
@@ -188,23 +188,26 @@ Pada UML GRESIK dan MADIUN (client) sering force close tetapi tidak bisa di-*hal
 	~~~
 7. Di SURABAYA tambahkan konfigurasi seperti pada gambar atau pada potongan konfigurasi di bawah ini
 	* Line `SERVERS="10.151.79.132"` yang merupakan alamat IP dari TUBAN dan `INTERFACES="eth1 eth2 eth3"`
-	* Screenshot
-	<img width="496" alt="dhcp_relay_SURABAYA" src="https://user-images.githubusercontent.com/58472359/100223784-888f9d80-2f4e-11eb-912f-7b351eb7af39.png">
+	* Screenshot DHCP Relay di SURABAYA
+	![Screenshot DHCP Relay di SURABAYA]https://user-images.githubusercontent.com/58472359/100223784-888f9d80-2f4e-11eb-912f-7b351eb7af39.png)
 8. Lakukan `service isc-dhcp-server restart` pada TUBAN dan `service isc-dhcp-relay restart` pada SURABAYA
 9. Lakukan pengecekan dengan cara `service networking restart` kemudian cek IP dengan `ifconfig` pada masing-masing client
-	* [Screenshot GRESIK (subnet 1) 01](https://user-images.githubusercontent.com/58472359/100224057-e328f980-2f4e-11eb-903f-4b7bccb52506.png)
-	* [Screenshot GRESIK (subnet 1) 02](https://user-images.githubusercontent.com/58472359/100224069-e6bc8080-2f4e-11eb-8f87-0ebbc5baba0c.png)
-	* [Screenshot SIDOARJO (subnet 1) 01](https://user-images.githubusercontent.com/58472359/100224133-00f65e80-2f4f-11eb-84ed-b989bcb8d9d7.png)
-	* [Screenshot SIDOARJO (subnet 1) 02](https://user-images.githubusercontent.com/58472359/100224135-02c02200-2f4f-11eb-9987-50dae3863e42.png)
-	* [Screenshot BANYUWANGI (subnet 3) 01](https://user-images.githubusercontent.com/58472359/100224150-0653a900-2f4f-11eb-9349-1a001c14499f.png)
-	* [Screenshot BANYUWANGI (subnet 3) 02](https://user-images.githubusercontent.com/58472359/100224152-0784d600-2f4f-11eb-987c-4d8c639ff773.png)
-	* [Screenshot MADIUN (subnet 3) 01](https://user-images.githubusercontent.com/58472359/100224154-08b60300-2f4f-11eb-92a3-4018da040bbb.png)
-	* [Screenshot MADIUN (subnet 3) 02](https://user-images.githubusercontent.com/58472359/100224156-09e73000-2f4f-11eb-9f6c-e74f48f5975c.png)
+	* Screenshot GRESIK dan SIDOARJO (Subnet 1) 
+	![Screenshot GRESIK (subnet 1) 01](https://user-images.githubusercontent.com/58472359/100224057-e328f980-2f4e-11eb-903f-4b7bccb52506.png)
+	![Screenshot GRESIK (subnet 1) 02](https://user-images.githubusercontent.com/58472359/100224069-e6bc8080-2f4e-11eb-8f87-0ebbc5baba0c.png)
+	![Screenshot SIDOARJO (subnet 1) 01](https://user-images.githubusercontent.com/58472359/100224133-00f65e80-2f4f-11eb-84ed-b989bcb8d9d7.png)
+	![Screenshot SIDOARJO (subnet 1) 02](https://user-images.githubusercontent.com/58472359/100224135-02c02200-2f4f-11eb-9987-50dae3863e42.png)
+	* Screenshot BANYUWANGI dan MADIUN (Subnet 3)
+	![Screenshot BANYUWANGI (subnet 3) 01](https://user-images.githubusercontent.com/58472359/100224150-0653a900-2f4f-11eb-9349-1a001c14499f.png)
+	![Screenshot BANYUWANGI (subnet 3) 02](https://user-images.githubusercontent.com/58472359/100224152-0784d600-2f4f-11eb-987c-4d8c639ff773.png)
+	![Screenshot MADIUN (subnet 3) 01](https://user-images.githubusercontent.com/58472359/100224154-08b60300-2f4f-11eb-92a3-4018da040bbb.png)
+	![Screenshot MADIUN (subnet 3) 02](https://user-images.githubusercontent.com/58472359/100224156-09e73000-2f4f-11eb-9f6c-e74f48f5975c.png)
+	
 10. Lakukan juga pengecekan dengan cara `cat /etc/resolv.conf` pada masing-masing client untuk mengetahui DNS mana yang dituju, jika menunjukkan `nameserver 10.151.79.130` dan `nameserver 202.46.129.2` maka ketentuan pada soal sudah terpenuhi.
-	* [Screenshot GRESIK](https://user-images.githubusercontent.com/58472359/100224336-49158100-2f4f-11eb-9e9e-fe8ceec2171f.png)
-	* [Screenshot SIDOARJO](https://user-images.githubusercontent.com/58472359/100224340-4a46ae00-2f4f-11eb-9545-111390bd1ec7.png)
-	* [Screenshot BANYUWANGI](https://user-images.githubusercontent.com/58472359/100224347-4b77db00-2f4f-11eb-8db2-922b4c336e62.png)
-	* [Screenshot MADIUN](https://user-images.githubusercontent.com/58472359/100224350-4ca90800-2f4f-11eb-9e25-18a493bf47a5.png)
+	![Screenshot GRESIK](https://user-images.githubusercontent.com/58472359/100224336-49158100-2f4f-11eb-9e9e-fe8ceec2171f.png)
+	![Screenshot SIDOARJO](https://user-images.githubusercontent.com/58472359/100224340-4a46ae00-2f4f-11eb-9545-111390bd1ec7.png)
+	![Screenshot BANYUWANGI](https://user-images.githubusercontent.com/58472359/100224347-4b77db00-2f4f-11eb-8db2-922b4c336e62.png)
+	![Screenshot MADIUN](https://user-images.githubusercontent.com/58472359/100224350-4ca90800-2f4f-11eb-9e25-18a493bf47a5.png)
 ---
 ## Proxy Server
 7. Buat user authentication dengan ketentuan `username = userta_d15` dan `password = inipassw0rdta_d15`
