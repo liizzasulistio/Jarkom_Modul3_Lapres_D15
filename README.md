@@ -208,16 +208,17 @@ Pada UML GRESIK dan MADIUN (client) sering force close tetapi tidak bisa di-*hal
 <img width="512" alt="Proxy_Username_Password_01" src="https://user-images.githubusercontent.com/58472359/100533326-99cdf800-3235-11eb-8194-1ed963862e9c.png">
 <img width="532" alt="Proxy_Username_Password_02" src="https://user-images.githubusercontent.com/58472359/100533321-963a7100-3235-11eb-8721-524b4eceb35b.png">
 12. Di TUBAN buat file `etc/squid/acl.conf` dengan isian seperti pada konfigurasi atau screenshot di bawah ini:
-	~~~
-	acl AVAILABLE_WORKING time TW 13:00-18:00
-	acl AVAILABLE_GOOGLE_NIGHT time TWH 21:00-23:59
-	acl AVAILABLE_GOOGLE_DAY time WHF 00:00-09:00
-	~~~
-	<img width="512" alt="Proxy_Waktu" src="https://user-images.githubusercontent.com/58472359/100533324-976b9e00-3235-11eb-8d84-698717eaf7f9.png">
+~~~
+acl AVAILABLE_WORKING time TW 13:00-18:00
+acl AVAILABLE_GOOGLE_NIGHT time TWH 21:00-23:59
+acl AVAILABLE_GOOGLE_DAY time WHF 00:00-09:00
+~~~
+<img width="512" alt="Proxy_Waktu" src="https://user-images.githubusercontent.com/58472359/100533324-976b9e00-3235-11eb-8d84-698717eaf7f9.png">
 13. Konfigurasi di `/etc/squid/squid.conf` dan tampilan ketika mencoba mengakses google.com dan _redirect_ monta.if.its.ac.id
 	~~~
+	...
 	acl  BLACKLISTS google.com
-	
+
 	~~~	
 <img width="1495" alt="Redirect_Monta" src="https://user-images.githubusercontent.com/58472359/100533426-a7d04880-3236-11eb-8a99-57e57bdcc116.png">
 14. Konfigurasi dan screenshot keseluruhan pada `etc/squid/squid/.conf`
